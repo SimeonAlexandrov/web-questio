@@ -14,11 +14,15 @@
         $bool = false;
         while($row = $query->fetch()) {
             $table_users = $row['username']; 
-            $table_password = $row['password']; 
-            if( ($table_password == $password) && ($table_users == $username)) 
+            $table_password = $row['password'];
+            $table_role = $row['role'];
+            $ok = password_verify($password, ''.$row['password']);
+            
+            if ( $ok && ($table_users == $username)) 
             {
                 $bool = true;
-                $_SESSION['user'] = $username; 
+                $_SESSION['user'] = $username;
+                $_SESSION['role'] = $table_role; 
                 header("location: home.php"); 
             }
         }  

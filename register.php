@@ -37,7 +37,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	{
 		$stmt = $conn->prepare("INSERT INTO users (username, password, role) VALUES (:username, :password, :role)"); 
         
-        $stmt->execute(['username' => $username, 'password' => $password, 'role' => $role]);
+        $stmt->execute(['username' => $username, 'password' => password_hash($password, PASSWORD_DEFAULT), 'role' => $role]);
         Print '<script>alert("Successfully Registered!");</script>'; 
 		Print '<script>window.location.assign("register.php");</script>'; 
 	}
