@@ -23,7 +23,7 @@ function askQuestion(theForm) {
 
 function sendBotQuery(question, success){
     let xhttp = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
-    xhttp.open("POST", "https://api.dialogflow.com/v1/query", true);
+    xhttp.open("POST", "https://api.dialogflow.com/v1/query", false);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.setRequestHeader("Authorization", "Bearer 614607769937404db86e693a3ab6e93c")
     let bodyParams = {
