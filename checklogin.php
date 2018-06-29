@@ -5,10 +5,8 @@
     $password = $_POST['password'];
     $host = $config['DB_HOST'];
     $dbname = $config['DB_NAME'];
-
 	$conn  = new PDO("mysql:host=$host;dbname=$dbname", $config['DB_USER'], $config['DB_PASS']);
 	$sql = "SELECT * from users" ; 
-    
     $query = $conn->prepare($sql); 
     $query->execute();
     $table_users = "";
@@ -40,5 +38,5 @@
 	{
 		Print '<script>alert("Incorrect Username!");</script>'; 
 		Print '<script>window.location.assign("login.php");</script>'; 
-	}
+    }
 ?>

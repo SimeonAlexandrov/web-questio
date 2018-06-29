@@ -21,10 +21,13 @@
 
 		<?php 
 		 if ($role == 'user') {
-			 echo '<form action="ask.php" method="POST">
-			 Enter question: <input type="text" name="question" required="required" /> <br/>
-			 <input type="submit" value="Ask"/>
-		  </form>';
+			 echo "<div id='form-container'><form action='ask.php' id='question-form' method='POST' onsubmit='return askQuestion(this);'>
+			  <input type='text' name='question' id='question-value' required='required' placeholder='Ask anything about world cup' /> <br/>
+			 <input type='submit' value='Ask'/>
+		  </form></div>";
+			echo "<div id=\"history\">
+					<script>showHistory()</script>
+				</div>";
 		 } elseif  ($role == 'operator'){
 			echo '<div>Choose a question to answer</div>';
 		 }
