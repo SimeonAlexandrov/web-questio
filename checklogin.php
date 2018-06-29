@@ -1,8 +1,12 @@
 <?php
+    require_once 'config.php';
 	session_start();
 	$username = $_POST['username'];
     $password = $_POST['password'];
-	$conn  = new PDO('mysql:host=localhost;dbname=questio', 'root', '');
+    $host = $config['DB_HOST'];
+    $dbname = $config['DB_NAME'];
+
+	$conn  = new PDO("mysql:host=$host;dbname=$dbname", $config['DB_USER'], $config['DB_PASS']);
 	$sql = "SELECT * from users" ; 
     
     $query = $conn->prepare($sql); 

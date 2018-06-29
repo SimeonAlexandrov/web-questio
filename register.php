@@ -15,12 +15,17 @@
 </html>
 
 <?php
+require_once 'config.php';
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 	$username = $_POST['username'];
     $password = $_POST['password'];
     $role = $_POST['role'];
     $bool = true;
-    $conn  = new PDO('mysql:host=localhost;dbname=questio', 'root', ''); 
+
+    $host = $config['DB_HOST'];
+    $dbname = $config['DB_NAME'];
+
+	$conn  = new PDO("mysql:host=$host;dbname=$dbname", $config['DB_USER'], $config['DB_PASS']);
 	$sql = "SELECT * FROM users";
     $query = $conn->query($sql) or die("failed!");
 	while($row = $query->fetch(PDO::FETCH_ASSOC)) 
