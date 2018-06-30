@@ -31,28 +31,3 @@ function sendBotQuery(question, success){
     xhttp.send(JSON.stringify(bodyParams));
     return success(xhttp)
 }
-function showHistory() {
-    let divElement = document.getElementById('history')
-    while (divElement.firstChild) {
-        divElement.removeChild(divElement.firstChild);
-        
-    } 
-    let historyElement = document.createElement('div');
-    let title = createTitle('lolool')
-    historyElement.append(title)
-    divElement.append(historyElement)
-}
-
-function createTitle(name) {
-    let fieldDiv = document.createElement("div");
-    fieldDiv.setAttribute("class", "title_field");
-    fieldDiv.innerHTML = "<h1>" + name + "</h1>";
-    return fieldDiv;
-}
-
-function createParagraph(fieldText) {
-    let paragraph = document.createElement("p");
-    paragraph.setAttribute("class", "field");
-    paragraph.innerText = fieldText;
-    return paragraph;
-}

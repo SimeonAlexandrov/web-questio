@@ -1,9 +1,10 @@
 <html>
 	<head>
-		<title>My first PHP website</title>
+		<title>World Cup Q&A</title>
 
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 		<link rel="stylesheet" type="text/css" media="screen" href="./styles/global.css">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:thin,extra-light,light,100,200,300,400,500,600,700,800" rel="stylesheet" type="text/css">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 		<script src="./home.js"></script>
 		<?php 
 		session_start(); 
@@ -19,9 +20,20 @@
 	
 	<body>
 		<div class="container">
-		<h2>Home Page</h2>
-		<p>Hello <?php Print "$user"."  $role";?>!</p> 
-        <a href="logout.php">Click here to logout</a><br/><br/>
+		<h1>World Cup Q&A</h1>
+		<div id='history-container' class='bubble'>
+		<p>Hello <?php Print "$user";?>!</p> 
+		<p> 
+			<?php 
+			if($role == 'user') {
+				Print "You logged in with "."$role"." role. Feel free to ask any question about the world cup and request operator assistance.";
+			} elseif ($role == 'operator') {
+				Print "You logged in with"."$role"." role. Feel free to answer some of the questions.";
+			}
+			?>
+		</p> 
+		<a href="logout.php">Click here to logout</a><br/><br/>
+		</div>
 
 		<?php
 		require_once 'getQuestions.php'; 

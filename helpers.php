@@ -3,7 +3,7 @@ function getAskForm() {
     echo "<form action='ask.php' id='question-form' method='POST' onsubmit='return askQuestion(this);'>
 			  <input type='text' name='question' id='question-value' required='required' placeholder='Ask anything about world cup' /> <br/>
 			  <input type='hidden' id='answer' name='answer' />
-			  <input type='submit' value='Ask'/>
+			  <input type='submit' value='Ask a question'/>
 		  </form>";
 }
 function getQuestionBubble($question) {
