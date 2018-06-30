@@ -18,6 +18,7 @@
 	</head>
 	
 	<body>
+		<div class="container">
 		<h2>Home Page</h2>
 		<p>Hello <?php Print "$user"."  $role";?>!</p> 
         <a href="logout.php">Click here to logout</a><br/><br/>
@@ -26,23 +27,19 @@
 		require_once 'getQuestions.php'; 
 		require_once 'helpers.php';
 		 if ($role == 'user') {
-			echo "<div id='form-container'>";
+			echo "<div id='form-container' class='bubble'>";
 			getAskForm();
-			echo'</div>';
-			echo "<div id='history-container'>";
-			getHistory($getQuestions);
-			echo'</div>';
+			echo'</div>';		
+			getHistory($getQuestions);;
 
 		 } elseif  ($role == 'operator'){
-			echo "<div id='form-container'>";
+			echo "<div id='form-container' class='bubble'>";
 			getAnswerForm($getUnansweredQuestions);
 			echo'</div>';
-			echo "<div id='history-container'>";
 			getHistory($getPreviouslyAnsweredQuestions);
-			echo'</div>';
 		 }
 		?>
 		
-
+		</div>
     </body>
 </html>

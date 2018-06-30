@@ -7,7 +7,6 @@ function getAskForm() {
 		  </form>";
 }
 function getQuestionBubble($question) {
-    echo '<div>';
     echo '<div class="speech-bubble-left">';
     echo '<h4>'.$question.'</h4>';
     echo '</div>';
@@ -29,13 +28,13 @@ function getRequestedOperator($question) {
 							<input type='submit' value='Request operator answer'/>
 							<input type='hidden' id='question' name='question' value='$question'/>
                             </form>";
-                            echo '</div>';
 }
 
 function getHistory($data) {
     while($row = $data->fetch(PDO::FETCH_ASSOC)) 
     {
         
+        echo "<div id='history-container' class='bubble'>";
         getQuestionBubble($row['question']);
         if ($row['botAnswer']) {
             getBotAnswerBubble($row['botAnswer']);
@@ -48,6 +47,7 @@ function getHistory($data) {
                 getRequestedOperator($question);
             }
         }
+        echo "</div>";
     }
 }
 
