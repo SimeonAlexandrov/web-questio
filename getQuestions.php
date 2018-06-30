@@ -18,4 +18,7 @@
 
     $getUnansweredQuestions = $conn->prepare("SELECT * FROM questions WHERE (requestedAnswer = TRUE AND operator IS NULL )  ORDER BY timeAdded DESC");
     $getUnansweredQuestions->execute();
+
+    $getPreviouslyAnsweredQuestions = $conn->prepare("SELECT * FROM questions WHERE operator = :user ORDER BY timeAnswered DESC");
+    $getPreviouslyAnsweredQuestions->execute(['user' => $user]);
 ?>
