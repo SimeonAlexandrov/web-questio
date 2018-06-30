@@ -4,13 +4,9 @@ function askQuestion(theForm) {
         console.log('valid question')
         sendBotQuery(question, (res) => {
             let parsedResult = JSON.parse(res.responseText).result
-            if (parsedResult.action == "input.unknown") {
-                alert(parsedResult.speech)
-                document.getElementById("question-form").reset()
-                return false
-            } else {
-                alert(parsedResult.speech)
-            }
+            alert(parsedResult.speech)
+            document.getElementById('answer').value = parsedResult.speech
+            console.log(document.getElementById('answer').value)
             return true
         })
 
@@ -28,14 +24,13 @@ function sendBotQuery(question, success){
     xhttp.setRequestHeader("Authorization", "Bearer 614607769937404db86e693a3ab6e93c")
     let bodyParams = {
         "lang": "en",
-        "query": `${question}`,
+        "query": question,
         "sessionId": "1235",
         "timezone": "Europe/Moscow"
     }
     xhttp.send(JSON.stringify(bodyParams));
     return success(xhttp)
 }
-
 function showHistory() {
     let divElement = document.getElementById('history')
     while (divElement.firstChild) {
