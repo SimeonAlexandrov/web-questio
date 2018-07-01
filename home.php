@@ -28,7 +28,7 @@
 			if($role == 'user') {
 				Print "You logged in with "."$role"." role. Feel free to ask any question about the world cup and request operator assistance.";
 			} elseif ($role == 'operator') {
-				Print "You logged in with"."$role"." role. Feel free to answer some of the questions.";
+				Print "You logged in with "."$role"." role. Feel free to answer some of the questions.";
 			}
 			?>
 		</p> 
@@ -42,13 +42,13 @@
 			echo "<div id='form-container' class='bubble'>";
 			getAskForm();
 			echo'</div>';		
-			getHistory($getQuestions);;
+			getHistory($getQuestions, $role);;
 
 		 } elseif  ($role == 'operator'){
 			echo "<div id='form-container' class='bubble'>";
 			getAnswerForm($getUnansweredQuestions);
 			echo'</div>';
-			getHistory($getPreviouslyAnsweredQuestions);
+			getHistory($getPreviouslyAnsweredQuestions, $role);
 		 }
 		?>
 		

@@ -13,6 +13,7 @@ function askQuestion(theForm) {
     } else {
         console.log('invalid question')
         document.getElementById("question-form").reset()
+        alert('Must be a valid question!')
         return false
     }
 }

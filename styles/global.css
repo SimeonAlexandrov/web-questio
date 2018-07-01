@@ -17,14 +17,26 @@
 .speech-bubble-right { 
     text-align: right; 
     position: relative; 
-    background: #d4d10f; 
+    background: #ddbd07; 
     border-radius: .4em; 
     margin-left: 30%;
     margin-top: 2%; 
     margin-bottom: 2%;
 
 } 
-.speech-bubble-right:after { content: ''; position: absolute; right: 0; top: 50%; width: 0; height: 0; border: 0.417em solid transparent; border-left-color: #d4d10f; border-right: 0; border-bottom: 0; margin-top: -0.208em; margin-right: -0.417em; }
+.speech-bubble-right:after { content: ''; position: absolute; right: 0; top: 50%; width: 0; height: 0; border: 0.417em solid transparent; border-left-color: #ddbd07; border-right: 0; border-bottom: 0; margin-top: -0.208em; margin-right: -0.417em; }
+
+.speech-bubble-right-operator { 
+    text-align: right; 
+    position: relative; 
+    background: #dd9207; 
+    border-radius: .4em; 
+    margin-left: 30%;
+    margin-top: 2%; 
+    margin-bottom: 2%;
+
+} 
+.speech-bubble-right-operator:after { content: ''; position: absolute; right: 0; top: 50%; width: 0; height: 0; border: 0.417em solid transparent; border-left-color: #dd9207; border-right: 0; border-bottom: 0; margin-top: -0.208em; margin-right: -0.417em; }
 
 
 html { 
@@ -64,9 +76,13 @@ body {
     border: 5px solid #bfbfbf;
  }
 
- h1 { color: #ffffff; font-size: 54px; font-weight: 300; line-height: 58px; margin: 0 0 24px; }
+ h1 { color: #ffffff; font-size: 54px; font-weight: 300; line-height: 58px; margin: 0 0 24px; text-align: center}
 
  input[type=text] {
+    width: 100%;
+ }
+
+ input[type=password] {
     width: 100%;
  }
 
@@ -105,6 +121,8 @@ body {
   text-decoration: none;
   text-transform: uppercase;
   border-radius: 10px;
+  border: none;
+  margin: 10px;
 }
 
 a:hover {
@@ -119,3 +137,19 @@ a:active {
 
  p { text-align: left; color: #222; font-size: 20px; font-weight: 400; line-height: 24px; margin: 0 0 14px; }
  h4 { color: #ffffff; font-size: 26px; font-weight: 300; line-height: 32px; margin: 2px 2px 2px 14px; }
+
+ .left {
+     text-align: left;
+     position: relative;
+     float: left;
+     margin-left: 20px;
+     color: rgb(95, 95, 95);
+ }
+
+ .right {
+    text-align: right;
+    position: relative;
+    float: right;
+    margin-right: 20px;
+    color: rgb(95, 95, 95);
+}

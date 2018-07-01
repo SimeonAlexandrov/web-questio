@@ -6,22 +6,38 @@ function getAskForm() {
 			  <input type='submit' value='Ask a question'/>
 		  </form>";
 }
-function getQuestionBubble($question) {
+function getQuestionBubble($question, $timeAdded, $role, $asker) {
     echo '<div class="speech-bubble-left">';
     echo '<h4>'.$question.'</h4>';
     echo '</div>';
+    if ($role == 'user') {
+        echo '<small class="left">You, '.$timeAdded.'</small>';
+    }
+    elseif ($role == 'operator') {
+        echo '<small class="left">'.$asker.', '.$timeAdded.'</small>';
+    }
+    echo '</br>';
 }
 
 function getBotAnswerBubble($botAnswer) {
     echo '<div class="speech-bubble-right">';
     echo '<h4>'.$botAnswer.'</h4>';
     echo '</div>';
+    echo '<small class="right">World Cup Bot</small>';
+    echo '</br>';
 }
 
-function getOperatorAnswer($answer) {
-    echo '<div class="speech-bubble-right">';
+function getOperatorAnswer($answer, $timeAnswered, $role, $operator) {
+    echo '<div class="speech-bubble-right-operator">';
     echo '<h4>'.$answer.'</h4>';
     echo '</div>';
+    if ($role == 'user') {
+        echo '<small class="right">'.$operator.', '.$timeAnswered.'</small>';
+    }
+    elseif ($role == 'operator') {
+        echo '<small class="right">You, '.$timeAnswered.'</small>';
+    }
+    echo '</br>';
 }
 function getRequestedOperator($question) {
     echo "<form action='request.php' id='request-form' method='POST'>
@@ -30,17 +46,17 @@ function getRequestedOperator($question) {
                             </form>";
 }
 
-function getHistory($data) {
+function getHistory($data, $role) {
     while($row = $data->fetch(PDO::FETCH_ASSOC)) 
     {
         
         echo "<div id='history-container' class='bubble'>";
-        getQuestionBubble($row['question']);
+        getQuestionBubble($row['question'], $row['timeAdded'], $role, $row['asker']);
         if ($row['botAnswer']) {
             getBotAnswerBubble($row['botAnswer']);
         } 
         if ($row['operatorAnswer']) {
-            getOperatorAnswer($row['operatorAnswer']);
+            getOperatorAnswer($row['operatorAnswer'], $row['timeAnswered'], $role, $row['operator']);
         } else {
             if (!$row['requestedAnswer']) {
                 $question = $row['question'];
