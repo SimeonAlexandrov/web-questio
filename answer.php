@@ -5,9 +5,6 @@
         if($_SESSION['user']){ 
             $question = $_POST['selectedQuestion'];
             $answer = ''.$_POST['answer'];
-            echo $question;
-            echo $_SESSION['user'];
-            echo $answer;
             $time= date('Y-m-d H:i:s');
             $host = $config['DB_HOST'];
             $dbname = $config['DB_NAME'];
